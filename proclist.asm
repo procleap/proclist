@@ -1,3 +1,12 @@
+; proclist, a simple ASM program for listing processes.
+; Author: https://github.com/procleap
+;
+; How to assemble it (example):
+;
+;   E:>fasm proclist.asm
+;   flat assembler  version 1.73.06  (1240477 kilobytes memory)
+;   3 passes, 0.1 seconds, 2048 bytes.
+
 format PE64 console
 entry start
 
@@ -21,7 +30,7 @@ proc ProcessesList
         local hProccessSnap:DWORD
         local pe32:PROCESSENTRY32
 
-        ; Get a snashot of all processes. 
+        ; Get a snapshot of all processes. 
         invoke  CreateToolhelp32Snapshot,TH32CS_SNAPPROCESS,0
         mov     [hProccessSnap],eax
         cmp     eax,INVALID_HANDLE_VALUE
